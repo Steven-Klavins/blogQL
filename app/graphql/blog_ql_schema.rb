@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BlogQLSchema < GraphQL::Schema
+class BlogQlSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 
