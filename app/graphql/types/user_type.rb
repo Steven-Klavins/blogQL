@@ -12,6 +12,7 @@ class Types::UserType < Types::BaseObject
   field :full_address, String, null: false
   field :posts, [Types::PostType], null: false
   field :created_at, GraphQL::Types::ISO8601DateTime, null: false
+  field :errors, [Types::ErrorType], null: true
 
   def posts
     object.posts
@@ -19,6 +20,10 @@ class Types::UserType < Types::BaseObject
 
   def full_address
     "#{object.house_number} #{object.street} #{object.city} #{object.country}"
+  end
+
+  def errors
+    object.errors.map {|e| {field_name: e.attribute, error: object.errors[e.attribute]}}
   end
 end
 
