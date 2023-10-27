@@ -21,3 +21,16 @@ class Types::UserType < Types::BaseObject
     "#{object.house_number} #{object.street} #{object.city} #{object.country}"
   end
 end
+
+class Types::UserInputType < GraphQL::Schema::InputObject
+  graphql_name "UserInputType"
+  description "The attributes required to create/update a user."
+
+  argument :id, ID, required: false
+  argument :first_name, String, required: false
+  argument :last_name, String, required: true
+  argument :street, String, required: false
+  argument :house_number, Integer, required: false
+  argument :city, String, required: false
+  argument :country, String, required: true
+end
